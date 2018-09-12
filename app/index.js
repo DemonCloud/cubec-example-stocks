@@ -31,6 +31,7 @@ const App = cubec.view({
 
   events: {
     completeRender(){
+      // 将模型和视图关联起来
       search.connect(searchModel);
       tabs.connect(stocksModel);
       table.connect(stocksModel);
