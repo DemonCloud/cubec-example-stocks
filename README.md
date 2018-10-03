@@ -13,4 +13,4 @@ npm install && npm run dev
 https://localhost:9001
 ```
 
-![gif](http://7j1zwt.com1.z0.glb.clouddn.com/2018-09-12%2015.58.16.gif)
+![gif](http://demonc.qiniudn.com/2018-10-03%2022.42.10.gif)

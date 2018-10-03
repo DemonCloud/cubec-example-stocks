@@ -22,10 +22,6 @@ const table = cubec.view({
   template: `
 
     <table class="stock-table_content">
-      {{if _inRequest }}
-      <tr class="stock-table_loading"><td>Loading...</td></tr>
-      {{/if}}
-
       {{ var _size = struct.size() }}
       {{if _size(dataSource) && (typeof dataSource === "object") }}
       <thead>
@@ -54,6 +50,9 @@ const table = cubec.view({
         </tr>
         {{*/each}}
       </tbody>
+      {{/if}}
+      {{if _inRequest }}
+      <tr class="stock-table_loading"><td>Loading...</td></tr>
       {{/if}}
     </table>
   `,
