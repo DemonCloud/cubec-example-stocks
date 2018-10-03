@@ -11,7 +11,7 @@ const requestSearchModel = cubec.model({
     this.set({}, true);
   },
 
-  fetchFilter(data) {
+  parse(data) {
     data.time = data["delayedPriceTime"];
 
     data.trend = "⇅" + (parseFloat(data.high) - parseFloat(data.low)).toFixed(4);
