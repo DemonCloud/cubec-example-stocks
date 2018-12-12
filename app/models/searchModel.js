@@ -78,9 +78,10 @@ const searchModel = cubec.model({
   },
 
   events: {
-    'change:keys': function(data) {
+    'change:keys': function(newkeys) {
+      console.log(newkeys);
       // 实时将查询历史同步到 搜索历史模型中
-      searchKeysStoreModel.set(data);
+      searchKeysStoreModel.set("keys",newkeys);
     },
   },
 

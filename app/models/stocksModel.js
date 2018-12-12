@@ -14,18 +14,12 @@ const stocksModel = cubec.model({
   },
 
   events: {
-    change(data){
-      console.log(data);
-    },
-
-    'change:tab': function(data) {
-      const tab = data.tab;
-
-      if (tab === TABS.INFOCUS) {
+    'change:tab': function(newtab, prevtab) {
+      if (newtab === TABS.INFOCUS) {
         sourceModel._targetInfocus();
-      } else if (tab === TABS.GAINERS) {
+      } else if (newtab === TABS.GAINERS) {
         sourceModel._targetGainers();
-      } else if (tab === TABS.LOSERS) {
+      } else if (newtab === TABS.LOSERS) {
         sourceModel._targetLosers();
       }
     },
