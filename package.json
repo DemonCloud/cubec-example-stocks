@@ -18,14 +18,14 @@
   "homepage": "https://github.com/DemonCloud/cubec-example-stocks#readme",
   "dependencies": {
     "css-loader": "^1.0.1",
-    "cubec": "^1.4.5",
+    "cubec": "^1.5.3",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "http-proxy-middleware": "^0.19.1",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "webpack": "^4.28.4",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   }
 }
