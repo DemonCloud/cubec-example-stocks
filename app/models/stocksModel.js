@@ -6,10 +6,15 @@ import TABS from '../define/tabs';
 const stocksModel = cubec.model({
   name: 'stocksModel',
 
+  // 默认数据
   data: {
+    // 初始化选中的tab(默认股票展示焦点关注分类)
     tab: TABS.INFOCUS,
+
+    // 表格数据
     dataSource: [],
 
+    // 当前数据是否正在请求中
     _inRequest: false
   },
 

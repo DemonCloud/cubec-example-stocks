@@ -8,20 +8,21 @@ const tabs = cubec.view({
   props: {
     ...TABS,
 
-    _active(tab, check){
+    __isActive(tab, check){
       return tab === check ? "active" : "";
     }
   },
 
   template: `
     <tabs class="stock-tabs">
-      <tab class="stock-tabs_aim {{#_active(tab, INFOCUS)}}" _key={{#INFOCUS}}>Infocus</tab>
-      <tab class="stock-tabs_aim {{#_active(tab, GAINERS)}}" _key={{#GAINERS}}>Gainers</tab>
-      <tab class="stock-tabs_aim {{#_active(tab, LOSERS)}}" _key={{#LOSERS}}>Losers</tab>
+      <tab class="stock-tabs_aim {{#__isActive(stocksModel.tab, INFOCUS)}}" _key={{#INFOCUS}}>Infocus</tab>
+      <tab class="stock-tabs_aim {{#__isActive(stocksModel.tab, GAINERS)}}" _key={{#GAINERS}}>Gainers</tab>
+      <tab class="stock-tabs_aim {{#__isActive(stocksModel.tab, LOSERS)}}" _key={{#LOSERS}}>Losers</tab>
     </tabs>
   `,
 
   events: {
+    // 切换tab分类
     "click:.stock-tabs_aim": function(event){
       event.preventDefault();
       event.stopPropagation();

@@ -1,19 +1,19 @@
 import cubec from 'cubec';
 import api from '../api';
 
-const unique = cubec.struct.unique('fast');
 const extend = cubec.struct.extend();
 const index = cubec.struct.index();
 
 // 请求查询数据模型
 const requestSearchModel = cubec.model({
+  name: "searchModel",
+
   _reset() {
     this.set({}, true);
   },
 
   parse(data) {
-    data.time = data["delayedPriceTime"];
-
+    data.time = data.delayedPriceTime;
     data.trend = "⇅" + (parseFloat(data.high) - parseFloat(data.low)).toFixed(4);
 
     // 合并数据时，忽略掉某些字段
@@ -69,11 +69,18 @@ const searchKeysStoreModel = cubec.model({
 const searchModel = cubec.model({
   name: 'searchModel',
 
+  // 默认数据
   data: {
+    // 搜索历史关键字
     keys: searchKeysStoreModel.get('keys'),
+
+    // 当前正在输入的搜索关键字
     search: '',
+
+    // 搜索结果
     searchResult: -1,
 
+    // 搜索模型是否正在请求数据
     _inRequest: false,
   },
 

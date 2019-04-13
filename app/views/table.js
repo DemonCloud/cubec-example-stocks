@@ -1,29 +1,30 @@
 import cubec from 'cubec';
 
+const size = cubec.struct.size();
+const isObject = cubec.struct.type("object");
+
 const table = cubec.view({
   name: 'stock-table',
 
   props: {
-    _execChange(price) {
+    __isAvailable(dataSource){
+      return size(dataSource) && isObject(dataSource);
+    },
+
+    __execChange(price) {
       let num = parseFloat(price);
 
       if (num > 0) {
-        return `
-          <td class="_change up">+${price}</td>
-        `;
+        return `<td class="_change up">+${price}</td>`;
       }
 
-      return `
-        <td class="_change down">${price}</td>
-      `;
+      return `<td class="_change down">${price}</td>`;
     },
   },
 
   template: `
-
     <table class="stock-table_content">
-      {{ var _size = struct.size() }}
-      {{if _size(dataSource) && (typeof dataSource === "object") }}
+      {{ if __isAvailable(stocksModel.dataSource) }}
       <thead>
         <tr>
           <th>symbol</th>
@@ -37,7 +38,7 @@ const table = cubec.view({
         </tr>
       </thead>
       <tbody>
-        {{*each [stock] in dataSource }}
+        {{*each [stock] in stocksModel.dataSource }}
         <tr>
           <td class="_symbol">{{#stock.symbol}}</td>
           <td class="_company">{{#stock.companyName}}</td>
@@ -46,12 +47,12 @@ const table = cubec.view({
           <td class="_high">{{#stock.high}}</td>
           <td class="_weekhigh">{{#stock.week52High}}</td>
           <td class="_weeklow">{{#stock.week52Low}}</td>
-          {{#_execChange(stock.change)}}
+          {{#__execChange(stock.change)}}
         </tr>
         {{*/each}}
       </tbody>
       {{/if}}
-      {{if _inRequest }}
+      {{if stocksModel._inRequest }}
       <tr class="stock-table_loading"><td>Loading...</td></tr>
       {{/if}}
     </table>

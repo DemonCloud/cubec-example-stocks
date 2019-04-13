@@ -1,5 +1,6 @@
 # cubec-example-stocks
-cubec example online U.S stocks
+
+cubec example online U.S stocks use common API
 
 API: [API 1.0 | IEX - stock](https://iextrading.com/developer/docs/)
 
@@ -8,9 +9,10 @@ API: [API 1.0 | IEX - stock](https://iextrading.com/developer/docs/)
 npm install && npm run dev
 ```
 
-# host && review
-```
+server host on ``https``
+
+```txt
 https://localhost:9001
 ```
 
-![gif](https://s1.ax1x.com/2018/12/08/F8mSiR.gif)
+![gif](https://s2.ax1x.com/2019/04/13/ALJAHK.gif)

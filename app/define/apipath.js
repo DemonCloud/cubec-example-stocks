@@ -1,4 +1,4 @@
-// 请求路径
+// 请求API路径
 const APIPATH = {
   INFOCUS: '/market/list/infocus',
   GAINERS: '/market/list/gainers',

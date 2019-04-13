@@ -9,13 +9,20 @@ import search from './views/search';
 import table from './views/table';
 import tabs from './views/tabs';
 
+const dataAtom = cubec.atom({
+  use: [searchModel, stocksModel],
+  connect: true,
+});
+
 const App = cubec.view({
   name: 'stocks',
 
+  connect: dataAtom,
+
   template: `
-    <slot>views.search::searchModel</slot>
-    <slot>views.table::stocksModel</slot>
-    <slot>views.tabs::stocksModel</slot>
+    <slot>views.search</slot>
+    <slot>views.table</slot>
+    <slot>views.tabs</slot>
   `,
 
   views: {
@@ -23,26 +30,10 @@ const App = cubec.view({
     tabs,
     table,
   },
-
-  models: {
-    searchModel,
-    stocksModel
-  },
-
-  events: {
-    completeRender(){
-      // 将模型和视图关联起来
-      search.connect(searchModel);
-      tabs.connect(stocksModel);
-      table.connect(stocksModel);
-    }
-  }
-
 });
 
-window.searchModel =  searchModel;
-
+// 挂载视图
 App.mount(
   document.getElementById("app"),
-  App.models
+  dataAtom
 );
